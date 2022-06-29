@@ -1,0 +1,41 @@
+<div *ngIf="isModalShown" [config]="{ backdrop: 'static', show: true }" bsModal #autoShownModal="bs-modal"
+  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
+
+  <div class="modal-dialog modal-md">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h4 id="dialog-auto-name" class="modal-title pull-left">
+          Türkiye Hava Durumu
+        </h4>
+
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+
+      </div>
+
+      <div class="modal-body">
+
+        <p>Türkiye hava durumu istasyonuna hoşgeldiniz!</p>
+        <p>Lütfen aşağıda yer alan kutucuğa API anahtarını giriniz...</p>
+
+        <form [formGroup]="apiKeyForm" (ngSubmit)="submit()">
+
+          <div class="form-group">
+            <label class="d-block mb-2">Api Key</label>
+            <input type="text" class="w-100 px-2 py-1" formControlName="apiKey" autocomplete="off" />
+          </div>
+
+          <button type="submit" [disabled]="!apiKeyForm.value.apiKey" class="btn btn-primary d-block mt-4">
+            Onayla
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

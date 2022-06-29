@@ -1,0 +1,18 @@
+.site-header {
+  margin-bottom: 40px;
+  cursor: pointer;
+
+  &__title {
+    text-align: center;
+    background: #eee;
+    padding: 15px;
+    border-radius: 4px;
+    color: #9c9c9c;
+    font-size: 28px;
+
+    &__light {
+      font-weight: 300;
+      color: #adadad;
+    }
+  }
+}

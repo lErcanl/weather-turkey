@@ -1,0 +1,86 @@
+<div class="city" *ngIf="cityData">
+  <div class="header">
+    <h2>{{ cityData.name | uppercase }}</h2>
+
+    <div class="temperature">
+      <h4 (click)="celciusTemp()"><sup>o</sup>C</h4>
+      <h4 (click)="fahrenheitTemp()"><sup>o</sup>F</h4>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="row mx-0">
+
+      <div class="col-md-4 body-left px-0">
+
+        <dl>
+
+          <dt>Maks. Sıcaklık</dt>
+          <dd>
+            {{ cityData.main.temp_max }}
+            <span *ngIf="units == 'metric'"><sup>o</sup>C</span>
+            <span *ngIf="units == 'imperial'"><sup>o</sup>F</span>
+          </dd>
+
+          <dt>Min. Sıcaklık</dt>
+          <dd>
+            {{ cityData.main.temp_min }}
+            <span *ngIf="units == 'metric'"><sup>o</sup>C</span>
+            <span *ngIf="units == 'imperial'"><sup>o</sup>F</span>
+          </dd>
+
+          <dt>Rüzgar Hızı</dt>
+          <dd class="wind-ms" *ngIf="units == 'metric'">
+            {{ cityData.wind.speed }}
+          </dd>
+          <dd class="wind-mh" *ngIf="units == 'imperial'">
+            {{ cityData.wind.speed }}
+          </dd>
+
+          <dt>Bulutlanma</dt>
+          <dd class="cloudines">{{ cityData.clouds.all }}</dd>
+
+          <dt>Nem</dt>
+          <dd class="humidity">{{ cityData.main.humidity }}</dd>
+        </dl>
+      </div>
+
+      <div class="col-md-8 body-right">
+
+        <div class="d-flex align-items-center">
+
+          <h2 class="day">
+            {{ cityData.weather[0].description | titlecase }}
+          </h2>
+
+          <div class="weatherIcon">
+            <img [src]="
+                'http://openweathermap.org/img/w/' +
+                cityData.weather[0].icon +
+                '.png'
+              " alt="" />
+          </div>
+
+        </div>
+
+        <h4>
+          {{ cityData.main.temp }}
+          <span *ngIf="units == 'metric'"><sup>o</sup>C</span>
+          <span *ngIf="units == 'imperial'"><sup>o</sup>F</span>
+        </h4>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+
+    <h5>
+      Hava durumu bilgileri
+      <a href="https://home.openweathermap.org/">https://home.openweathermap.org/</a>
+      <span>adresinden alınmıştır.</span>
+    </h5>
+  </div>
+
+</div>

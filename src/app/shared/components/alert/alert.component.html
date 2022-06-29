@@ -1,0 +1,10 @@
+<div class="alert-container" *ngIf="alerts.message">
+  <div role="alert" class="alert-styled-left alert-dismissible alert-warning" [ngClass]="{
+      'alert-success': alerts.type == 'Başarılı',
+      'alert-warning': alerts.type == 'Hata'
+    }">
+    <h4 class="px-2 py-2">{{ alerts.type }}</h4>
+    <button type="button" class="btn-close" (click)="close()"></button>
+    <span class="px-2 d-block">{{ alerts.message }}</span>
+  </div>
+</div>
